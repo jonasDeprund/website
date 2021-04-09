@@ -288,6 +288,10 @@ body.hide {
   z-index: 3;
 }
 
+.active {
+  color: red;
+}
+
 @media screen and (max-width: 1500px) {
   .hero-img {
     height: 50vh;
