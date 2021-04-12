@@ -119,4 +119,34 @@ function animateSlides() {
   })
 }
 
+let mouse = document.querySelector('.cursor')
+let mouseTxt = document.querySelector('span')
+
+function cursor(e) {
+  console.log(e)
+  mouse.style.top = e.pageY + 'px'
+  mouse.style.left = e.pageX + 'px'
+}
+
+function activeCursor(e) {
+  const item = e.target
+  if (item.id === 'logo' || item.classList.contains('burger')) {
+    mouse.classList.add('nav-active')
+  } else {
+    mouse.classList.remove('nav-active')
+  }
+  if (item.classList.contains('explore')) {
+    gsap.to('.title-swipe', 1, { y: '0%' })
+    mouse.classList.add('explore-active')
+    mouseTxt.innerText = 'tap'
+  } else {
+    gsap.to('.title-swipe', 1, { y: '100%' })
+    mouse.classList.remove('explore-active')
+    mouseTxt.innerText = ''
+  }
+}
+
+window.addEventListener('mousemove', cursor)
+window.addEventListener('mouseover', activeCursor)
+
 animateSlides()
